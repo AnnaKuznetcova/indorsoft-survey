@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опрос от ИндорСофт</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { background: linear-gradient(135deg, #2E74B5, #1a4d7a); color: white; padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
+        .form-section { margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #2E74B5; }
+        h2 { color: #2E74B5; margin-bottom: 20px; }
+        .question { margin-bottom: 20px; padding: 15px; background: white; border-radius: 6px; border: 1px solid #e9ecef; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="number"], select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 10px; }
+        .checkbox-group, .radio-group { margin: 10px 0; }
+        .checkbox-group label, .radio-group label { font-weight: normal; margin-bottom: 5px; display: block; }
+        .submit-btn { background: linear-gradient(135deg, #ff6b00, #e55a00); color: white; padding: 15px 40px; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; display: block; margin: 30px auto; }
+        .submit-btn:hover { background: linear-gradient(135deg, #e55a00, #cc4f00); }
+        .required { color: red; }
+        .small-text { font-size: 0.9em; color: #666; }
+        .success-message { background: #d4edda; color: #155724; padding: 20px; border-radius: 5px; text-align: center; margin: 20px 0; display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ИндорСофт</h1>
+            <p>Опрос ИТ-инфраструктуры управлений дорог</p>
+        </div>
+
+        <div id="successMessage" class="success-message">
+            <h3>✅ Спасибо за участие!</h3>
+            <p>Ваши ответы успешно отправлены. Мы свяжемся с вами для проведения бесплатного аудита.</p>
+        </div>
+
+        <form id="surveyForm">
+            <!-- Раздел 1: Общая информация -->
+            <div class="form-section">
+                <h2>📋 Раздел 1. Общая информация о вашей организации</h2>
+                
+                <div class="question">
+                    <label>Наименование Управления: <span class="required">*</span></label>
+                    <input type="text" name="company_name" required>
+                </div>
+
+                <div class="question">
+                    <label>Уровень подчинения: <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="level" value="federal" required> Федеральный</label>
+                        <label><input type="radio" name="level" value="regional"> Региональный</label>
+                        <label><input type="radio" name="level" value="municipal"> Муниципальный</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label>ФИО и должность ответственного: <span class="required">*</span></label>
+                    <input type="text" name="contact_person" required>
+                </div>
+
+                <div class="question">
+                    <label>Контактный email: <span class="required">*</span></label>
+                    <input type="email" name="contact_email" required>
+                </div>
+
+                <div class="question">
+                    <label>Контактный телефон:</label>
+                    <input type="tel" name="contact_phone">
+                </div>
+            </div>
+
+            <!-- Раздел 2: ПО общего назначения -->
+            <div class="form-section">
+                <h2>💻 Раздел 2. Программное обеспечение общего назначения</h2>
+                
+                <div class="question">
+                    <label>Операционные системы на рабочих местах:</label>
+                    <p class="small-text">Выберите все, что применяется, и укажите количество рабочих мест:</p>
+                    
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="os_win10"> Microsoft Windows 10/11</label>
+                        <input type="number" name="os_win10_count" placeholder="Кол-во рабочих мест" style="width: 150px;" min="0">
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="os_win_old"> Microsoft Windows 8/7 (устаревшие)</label>
+                        <input type="number" name="os_win_old_count" placeholder="Кол-во рабочих мест" style="width: 150px;" min="0">
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="os_linux_ru"> ALT Linux / РЕД ОС / Astra Linux и др.</label>
+                        <input type="number" name="os_linux_ru_count" placeholder="Кол-во рабочих мест" style="width: 150px;" min="0">
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="os_other"> Другое (укажите)</label> 
+                        <input type="text" name="os_other_text" placeholder="Какая ОС?" style="width: 200px;">
+                        <input type="number" name="os_other_count" placeholder="Кол-во" style="width: 100px;" min="0">
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label>Офисное программное обеспечение:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="office" value="ms_office"> Microsoft Office</label>
+                        <label><input type="radio" name="office" value="libreoffice"> LibreOffice / OpenOffice</label>
+                        <label><input type="radio" name="office" value="r7"> Р7-Офис / МойОфис</label>
+                        <label><input type="radio" name="office" value="office_other"> Другое (укажите)</label>
+                        <input type="text" name="office_other_text" placeholder="Какое ПО?" style="width: 250px; margin-top: 5px;">
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label>Система электронного документооборота (СЭД):</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="sed" value="1c_doc"> 1С:Документооборот</label>
+                        <label><input type="radio" name="sed" value="directum"> Directum / Directum RX</label>
+                        <label><input type="radio" name="sed" value="logika"> Логика DOCS</label>
+                        <label><input type="radio" name="sed" value="delo"> ДЕЛО</label>
+                        <label><input type="radio" name="sed" value="no_sed"> Не используем централизованную СЭД</label>
+                        <label><input type="radio" name="sed" value="sed_other"> Другое (укажите)</label>
+                        <input type="text" name="sed_other_text" placeholder="Какая СЭД?" style="width: 250px; margin-top: 5px;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Раздел 3: ПИР и СМР -->
+            <div class="form-section">
+                <h2>🏗️ Раздел 3. Проектирование (ПИР) и Строительно-монтажные работы (СМР)</h2>
+                
+                <div class="question">
+                    <label>ПО для проектирования дорог:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="pir_software" value="credo"> CREDO (CREDO ДОРОГИ, CREDO DAT)</label>
+                        <label><input type="radio" name="pir_software" value="autocad"> AutoCAD / AutoCAD Civil 3D</label>
+                        <label><input type="radio" name="pir_software" value="nanosoft"> Nanosoft Road</label>
+                        <label><input type="radio" name="pir_software" value="indor_pir"> IndorRoad (модуль ПИР)</label>
+                        <label><input type="radio" name="pir_software" value="no_pir"> Не используем специализированное ПО</label>
+                        <label><input type="radio" name="pir_software" value="pir_other"> Другое (укажите)</label>
+                        <input type="text" name="pir_other_text" placeholder="Какое ПО?" style="width: 250px; margin-top: 5px;">
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label>ПО для ведения исполнительной документации по СМР:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="smr_software" value="1c_smr"> Специализированные конфигурации 1С</label>
+                        <label><input type="radio" name="smr_software" value="excel"> Excel/Таблицы</label>
+                        <label><input type="radio" name="smr_software" value="indor_smr"> IndorRoad (модуль СМР)</label>
+                        <label><input type="radio" name="smr_software" value="smr_other"> Другое (укажите)</label>
+                        <input type="text" name="smr_other_text" placeholder="Какое ПО?" style="width: 250px; margin-top: 5px;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Раздел 4: Эксплуатация -->
+            <div class="form-section">
+                <h2>🛣️ Раздел 4. Эксплуатация и мониторинг дорожного хозяйства</h2>
+                
+                <div class="question">
+                    <label>Геоинформационные системы (ГИС) и геопорталы:</label>
+                    <p class="small-text">Выберите все, что используется:</p>
+                    
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="gis_indor"> IndorRoad</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="gis_dorogi"> ГИС "Дороги" / ГИС ОГД</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="gis_arcgis"> ArcGIS</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="gis_qgis"> QGIS / ГИС Панорама</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="gis_custom"> Собственная разработка / Геопортал</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="gis_none"> Не используем</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="gis_other"> Другое (укажите)</label>
+                        <input type="text" name="gis_other_text" placeholder="Какая ГИС?" style="width: 250px;">
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label>Работа с данными дорожных лабораторий:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="lab_data" value="import_gis"> Загружаем в специализированную ГИС</label>
+                        <input type="text" name="lab_data_gis_name" placeholder="В какую ГИС?" style="width: 250px; margin-left: 20px;">
+                        <label><input type="radio" name="lab_data" value="pdf"> Сохраняем в виде PDF-отчетов</label>
+                        <label><input type="radio" name="lab_data" value="excel_lab"> Весём в таблицах Excel</label>
+                        <label><input type="radio" name="lab_data" value="lab_other"> Другое (укажите)</label>
+                        <input type="text" name="lab_other_text" placeholder="Как именно?" style="width: 250px; margin-top: 5px;">
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label>Используется ли ИТС в дорожной деятельности?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="its" value="yes"> Да, используем</label>
+                        <input type="text" name="its_name" placeholder="Название и разработчик ИТС" style="width: 300px; margin-left: 20px;">
+                        <label><input type="radio" name="its" value="no"> Нет, не используем</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Раздел 5: Базы данных -->
+            <div class="form-section">
+                <h2>🗄️ Раздел 5. Базы данных и серверное ПО</h2>
+                
+                <div class="question">
+                    <label>Системы управления базами данных (СУБД):</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="dbms" value="mssql"> Microsoft SQL Server</label>
+                        <label><input type="radio" name="dbms" value="postgresql"> PostgreSQL</label>
+                        <label><input type="radio" name="dbms" value="oracle"> Oracle Database</label>
+                        <label><input type="radio" name="dbms" value="mysql"> MySQL</label>
+                        <label><input type="radio" name="dbms" value="dbms_ru"> Отечественные СУБД (Postgres Pro, РЕД База Данных)</label>
+                        <label><input type="radio" name="dbms" value="dbms_other"> Другое (укажите)</label>
+                        <input type="text" name="dbms_other_text" placeholder="Какая СУБД?" style="width: 250px; margin-top: 5px;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Раздел 6: Проблемы и пожелания -->
+            <div class="form-section">
+                <h2>❓ Раздел 6. Проблемы и пожелания</h2>
+                
+                <div class="question">
+                    <label>Сложности при обмене данными между программами:</label>
+                    <p class="small-text">Можно выбрать несколько вариантов:</p>
+                    
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="problem_format"> Несовместимость форматов файлов</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="problem_manual"> Отсутствие автоматизированного обмена</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="problem_duplicate"> Дублирование данных в разных системах</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="problem_agreement"> Долгая согласованность с поставщиками ПО</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="problem_none"> Проблем нет</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label>Главный критерий при выборе нового ПО:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="criterion" value="import_substitution"> Соответствие импортозамещению</label>
+                        <label><input type="radio" name="criterion" value="in_registry"> Наличие в реестре ПО</label>
+                        <label><input type="radio" name="criterion" value="cost"> Стоимость владения</label>
+                        <label><input type="radio" name="criterion" value="integration"> Возможности интеграции</label>
+                        <label><input type="radio" name="criterion" value="functionality"> Функциональность</label>
+                        <label><input type="radio" name="criterion" value="simplicity"> Простота освоения</label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">📤 Отправить ответы</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('surveyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Показываем сообщение об успехе
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('surveyForm').style.display = 'none';
+            
+            // Здесь можно добавить отправку данных на сервер
+            // Например, через EmailJS или на ваш бэкенд
+            
+            // Простая отправка через mailto (резервный вариант)
+            const formData = new FormData(this);
+            let emailBody = 'Результаты опроса ИндорСофт:\n\n';
+            
+            for (let [key, value] of formData.entries()) {
+                if (value) emailBody += `${key}: ${value}\n`;
+            }
+            
+            window.location.href = `mailto:opros@indorsoft.ru?subject=Результаты опроса&body=${encodeURIComponent(emailBody)}`;
+        });
+    </script>
+</body>
+</html>
